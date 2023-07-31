@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Kai's Portfolio</title>
+   <link rel="icon" type="image/x-icon" href="./assets/img/icon.png">
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="assets/mainStyle.css">
+
+   <style>
+      @keyframes header-textAnimation {
+         from {
+            transform: scale(1.2);
+         }
+
+         to {
+            transform: scale(1);
+
+         }
+      }
+
+      @keyframes streching {
+         0% {
+            width: 250px;
+            transform: translateX(0);
+
+         }
+
+         100% {
+            width: 50px;
+            transform: translateX(-20%);
+         }
+      }
+
+      .header {
+         width: auto;
+         display: flex;
+         flex-direction: column;
+         position: relative;
+         font-size: 2.9rem;
+         margin-top: 30px;
+         padding-left: 30px;
+      }
+
+
+      #intro-hr {
+         animation: streching 2s ease-in-out infinite;
+         animation-direction: alternate;
+      }
+
+      .header .whereTheTextLives {
+         position: relative;
+         animation: header-textAnimation 1.8s;
+         transition: font-size 0.7s ease;
+         width: 100%;
+      }
+
+      .header .whereTheTextLives .shiny {
+         background: -webkit-linear-gradient(-10deg, #979797, #1f1f1f);
+         -webkit-background-clip: text;
+         -moz-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         font-size: 2rem;
+         transition: font-size 0.7s ease;
+      }
+
+      .shiny::selection {
+         -webkit-text-fill-color: initial;
+      }
+
+      .header .whereTheTextLives p {
+         font-family: var(--font-name2);
+         font-weight: 400;
+         width: auto;
+         opacity: 0;
+         transform: translateX(-100%);
+         transition: opacity 0.8s, transform 0.8s;
+      }
+
+      .whereTheTextLives hr {
+         opacity: 0;
+         transform: translateX(-100%);
+         transition: opacity 0.8s, transform 0.8s;
+      }
+
+      .whereTheTextLives .littleTxt {
+         font-size: 10px;
+         font-weight: 300;
+      }
+
+      .skills-container {
+         margin: 10px 0;
+         display: flex;
+         justify-content: space-evenly;
+         border-radius: 13px;
+         gap: 50px;
+      }
+
+      .skills-container .skills-column {
+         display: flex;
+         flex-direction: column;
+         text-align: center;
+         /* grid-template-columns: 1fr 1fr; */
+      }
+
+      .skills-container .skills-sub-column {
+         display: grid;
+         text-align: center;
+         gap: 20px;
+         grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .twoColumn {
+         grid-template-columns: 1fr 1fr !important;
+
+      }
+
+      .skills-container .skills-column div {
+         text-align: center;
+      }
+
+      .skills-container .skills-column img {
+         margin: 0 auto;
+      }
+
+      .skills-column div {
+         display: flex;
+         flex-direction: column;
+         margin-top: 0;
+         margin-left: 0;
+         margin-right: 0;
+         margin-bottom: 20px;
+      }
+
+      .skill-header {
+         margin-bottom: 29px;
+         font-size: 25px;
+      }
+
+      .skill-header h2 {
+         font-weight: 400;
+      }
+
+      .skills-column p {
+         font-size: 20px;
+         font-weight: 400;
+      }
+
+      .skills-container div div i,
+      .skills-container div div svg {
+         font-size: 100px;
+         color: black;
+      }
+
+      .main-container {
+         height: 100vh;
+         display: flex;
+         flex-direction: row;
+         justify-content: space-evenly;
+         align-items: center;
+      }
+
+      .box-content {
+         height: 150px;
+         width: 150px;
+         border: 1px solid black;
+         background-color: blue;
+         min-height: 10vh;
+      }
+
+
+      .bg-video {
+         position: fixed;
+         top: 0;
+         right: 0;
+         z-index: -1;
+         min-width: 100%;
+         min-height: 100%;
+      }
+
+      .skills-sub-column .skills-description {
+         position: relative;
+         font-size: 12px;
+         font-weight: 400;
+         margin-top: 5px;
+      }
+
+
+      @media (max-width: 768px) {
+         .skills-container {
+            margin-top: 70px;
+            flex-direction: column;
+            overflow: hidden;
+         }
+
+         .main-container {
+            flex-direction: column;
+            height: auto;
+         }
+
+         .header {
+            padding-left: 0;
+            text-align: center;
+            font-size: 2.5rem !important;
+         }
+
+         .header .whereTheTextLives .shiny {
+            font-size: 1.5rem !important;
+         }
+
+         hr {
+            margin: 0 auto;
+         }
+      }
+
+      @media (max-width: 1150px) {
+         .main-container {
+            flex-direction: column;
+         }
+
+         .header {
+            padding-left: 0;
+            text-align: center;
+            font-size: 2.8rem;
+         }
+
+         .header .whereTheTextLives .shiny {
+            font-size: 1.8rem;
+         }
+
+         hr {
+            margin: 0 auto;
+         }
+      }
+
+      .skills-sub-column>div,
+      .skill-header h2 {
+         opacity: 0;
+         transform: translateX(-100%);
+         transition: transform 0.5s, opacity 0.8s;
+      }
+
+      .skills-sub-column div i,
+      .skills-sub-column div img {
+         transform: scale(0.95);
+         transition: 0.25s ease-out;
+
+      }
+
+      .skills-sub-column div img {
+         height: 100px;
+      }
+
+      .skills-sub-column div i:hover,
+      .skills-sub-column div img:hover {
+         transform: scale(1.05);
+         transition: 0.15s ease-in-out;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="nav" id="nav">
+      <div><a id="selected" href="index.html">Home</a></div>
+      <div><a href="projects.html">Projects</a></div>
+      <div><a href="contact.html">Contact</a></div>
+   </div>
+
+   <div class="main-container">
+      <video preload="auto" autoplay="autoplay" loop="loop" class="bg-video" style="aspect-ratio: 16/9;">
+         <source src="./assets/img/bg.webm#t=8,72" type="video/mp4">
+      </video>
+      <div class="header">
+         <div class="whereTheTextLives">
+            <p>Hi, I'm Kai Jie</p>
+            <p class="shiny">I'm a Web Developer</p>
+            <p class="littleTxt">Made using HTML, JS and CSS</p>
+            <hr id="intro-hr" width="250px" style="margin-top: 22px; height: 1px; background-color: black;">
+         </div>
+      </div>
+
+      <div class="skills-container">
+         <div class="skills-column">
+            <div class="skill-header">
+               <h2>Web Skills</h2>
+            </div>
+            <div class="skills-sub-column">
+               <style>
+                  .skills-sub-column {
+                     list-style: none;
+                     margin: 0;
+                     padding: 0;
+
+                  }
+               </style>
+               <div>
+                  <i class="fa-brands fa-html5" style="color: orange;"></i>
+                  <p>HTML</p>
+               </div>
+               <div>
+                  <i class="fa-brands fa-css3-alt" style="color: blue;"></i>
+                  <p>CSS</p>
+               </div>
+               <div>
+                  <i class="fa-brands fa-square-js" style="color: rgb(231, 231, 23);"></i>
+                  <p>JS</p>
+               </div>
+               <div>
+                  <img src="./assets/img/jq.png" alt="" draggable="false">
+                  <p>jQuery</p>
+                  <p class="skills-description">Javascript Library</p>
+               </div>
+               <div>
+                  <i class="fa-brands fa-php" style="color: #213454;"></i>
+                  <p>PHP</p>
+               </div>
+               <div>
+                  <img src="./assets/img/database.png" alt="" draggable="false">
+                  <p>mySQL</p>
+               </div>
+            </div>
+         </div>
+         <div class="skills-column">
+            <div class="skill-header">
+               <h2>App Skills</h2>
+            </div>
+            <div class="skills-sub-column twoColumn">
+               <div>
+                  <i class="fa-brands fa-app-store-ios" style="color: rgb(56, 129, 224);"></i>
+                  <p>Xcode</p>
+               </div>
+               <div>
+                  <i class="fab fa-swift" style="color: rgb(219, 163, 41);"></i>
+                  <p>Swift</p>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div style="display: hidden;"></div>
+
+   <div class="container-section section-transition">
+      <style>
+         .section-scrolling h1,
+         .section-scrolling p {
+            margin: 0;
+            font-family: var(--font-name2);
+         }
+
+         .section-scrolling {
+            position: relative;
+            top: 0;
+            display: flex;
+            width: 100%;
+         }
+
+         .section-scrolling .image-scroller {
+            position: sticky;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            top: 0;
+         }
+
+         .section-scrolling .image-scroller>div {
+            position: sticky;
+            top: auto;
+         }
+
+         .section-scrolling .image-scroller img {
+            position: absolute;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            width: 100%;
+            top: 0;
+            pointer-events: none;
+         }
+
+         .section-scrolling .scrolling-text {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            background-color: rgb(161, 198, 206);
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+
+         }
+
+         .section-scrolling .scrolling-text div {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            height: 100vh;
+            width: 60%;
+         }
+
+         .section-scrolling .scrolling-text h1 {
+            font-weight: 600;
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 35px;
+         }
+
+         .section-scrolling .scrolling-text p {
+            font-size: 1.3em;
+            width: 80%;
+            color: white;
+            line-height: 25px;
+         }
+
+
+         .section-scrolling .scrolling-text a:hover {
+            transition: ease-out 0.2s;
+            color: rgb(245, 245, 245);
+         }
+
+         .section-scrolling .scrolling-text a {
+            transition: ease-in 0.2s;
+            color: white;
+         }
+
+         .scrolling-text h1 a,
+         .scrolling-text li a {
+            text-decoration: none;
+         }
+
+         .scrolling-text h1 a:hover::after,
+         .scrolling-text li a:hover::after {
+            content: " <";
+         }
+
+         .sectionAll span h1,
+         .sectionAll span p,
+         .sectionAll ul li {
+            transform: translateY(50%);
+            opacity: 0;
+            transition: transform 500ms, opacity 500ms;
+            color: rgb(250, 250, 250);
+            font-weight: 400;
+            font-size: 20px;
+            text-shadow: 2px 5px 4px rgba(128, 128, 128, 0.3);
+         }
+
+         .sectionAll ul li:nth-child(3),
+         .sectionAll ul li:nth-child(4) {
+            font-size: 16px;
+            font-style: italic;
+         }
+
+         .scrolling-text ul li:nth-child(3):hover::before {
+            font-style: normal;
+            font-size: 15px;
+            font-weight: 500;
+            content: "Position: ";
+            color: rgb(255, 255, 255);
+         }
+
+         .scrolling-text ul li:nth-child(4):hover::before {
+            font-style: normal;
+            font-size: 15px;
+            font-weight: 500;
+            content: "Timeline: ";
+            color: rgb(255, 255, 255);
+         }
+
+         .section-transition {
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.8s, transform 0.8s;
+         }
+
+         @media (max-width: 768px) {
+            .section-scrolling {
+               flex-direction: column;
+            }
+
+            .scrolling-text>*>span {
+               background-color: rgba(0, 0, 0, 0.5);
+               border-radius: 7px;
+               padding: 30px;
+            }
+
+            .section-scrolling h1,
+            .section-scrolling p {
+               text-shadow: 2px 3px 20px black;
+            }
+
+            .section-scrolling .scrolling-text h1,
+            .sectionAll li:nth-child(1) a {
+               font-size: 25px !important;
+            }
+
+            .section-scrolling .scrolling-text p,
+            .sectionAll li:nth-child(1n) {
+               font-size: 18px !important;
+            }
+
+            .section-scrolling .image-scroller>img {
+               filter: brightness(0.8);
+            }
+
+            .section-scrolling .scrolling-text div {
+               align-items: center;
+            }
+         }
+
+
+         @media (max-width: 1024px) {
+            .section-scrolling {
+               flex-direction: column;
+            }
+
+            .scrolling-text>*>span,
+            .scrolling-text>*>ul {
+               background-color: rgba(0, 0, 0, 0.8);
+               border-radius: 7px;
+               padding: 30px;
+            }
+
+            .section-scrolling h1,
+            .section-scrolling p {
+               text-shadow: 2px 3px 20px black;
+            }
+
+            .section-scrolling .image-scroller>img {
+               filter: brightness(0.8);
+            }
+
+            .scrolling-text ul li:nth-child(3):hover::before,
+            .scrolling-text ul li:nth-child(4):hover::before {
+               color: rgb(238, 238, 238) !important;
+            }
+         }
+      </style>
+      <div class="section-scrolling">
+         <div class="image-scroller">
+            <div>
+               <a href="https://tyca.sftechnologiesstage.co"><img decoding="async" class="side-image lazyloaded"
+                     src="./assets/img/wd.png" style="opacity: 1;" alt="" draggable="false"></a>
+               <img decoding="async" class="side-image lazyloaded" src="./assets/img/sft.jpeg"
+                  style="opacity: 0; object-position: top;" alt="" draggable="false">
+               <!-- <img decoding="async" class="side-image lazyloaded"
+                        src="https://tyca.sftechnologiesstage.co/wp-content/uploads/2023/02/0L2A6199-scaled.jpg"
+                        style="opacity: 0;">
+                    <img decoding="async" class="side-image ls-is-cached lazyloaded"
+                        src="https://tyca.sftechnologiesstage.co/wp-content/uploads/2023/02/TIR0321-scaled.jpg"
+                        style="opacity: 0;">
+                    <img decoding="async" class="side-image lazyloaded"
+                        src="https://tyca.sftechnologiesstage.co/wp-content/uploads/2023/02/DSC06005-scaled.jpg"
+                        style="opacity: 0;"> -->
+
+            </div>
+         </div>
+         <div class="scrolling-text">
+            <div class="section0-scroll sectionAll">
+               <span>
+                  <h1><a href="./projects.html">Projects</a></h1>
+                  <p>Made during my internship</p>
+               </span>
+            </div>
+            <div class="section1-scroll sectionAll">
+               <ul style="list-style: none; text-decoration: none; color: white;">
+                  <li style="font-size: 35.2px; margin-bottom: 20px;"><a href="https://www.sftechnologies.co/"
+                        target="_blank">Internship</a></li>
+                  <li style="font-size: 20px;">My previously internship company</li>
+                  <li>Web Developer &
+                     UI/UX</li>
+                  <li>2022 Dec - 2023 March</li>
+               </ul>
+            </div>
+            <!-- <div class="section2-scroll sectionAll">
+                    <span>
+                        <h1>Connecting Communities</h1>
+                        <p>Through learning, working and play.</p>
+                    </span>
+                </div>
+                <div class="section3-scroll sectionAll">
+                    <span>
+                        <h1>Inspirational Spaces</h1>
+                        <p>Contemporary spaces that inspires social experiences within a nature setting.</p>
+                    </span>
+                </div>
+                <div class="section4-scroll sectionAll">
+                    <span>
+                        <h1>Garden to Table Dining</h1>
+                        <p>Home grown edible greens, from garden to fork.</p>
+                    </span>
+                </div> -->
+         </div>
+      </div>
+
+      <script>
+         // Animations
+         $(".whereTheTextLives p, .whereTheTextLives hr").delay(200).each(function (i) {
+            $(this).delay(500 / 1.5 * i).queue(function () {
+               $(this).css({ "opacity": 1, "transform": "translateX(0)" });
+            })
+         })
+
+         $(".skills-sub-column:nth-child(1n) div, .skill-header h2").delay(500).each(function (i) {
+            $(this).delay(300 / 1.5 * i).queue(function () {
+               $(this).css({ "opacity": 1, "transform": "translateX(0)" });
+            })
+         });
+      </script>
+
+      <script>
+         // Section Scrolling
+         $(function () {
+            $(document).on("scroll", function () {
+               var sectionScroll = $(".container-section").offset().top;
+               var section1 = $(".section1-scroll").offset().top - 350;
+               // section2 = $(".section2-scroll").offset().top - 350;
+               // section3 = $(".section3-scroll").offset().top - 350,
+               // section4 = $(".section4-scroll").offset().top - 350;
+               var documentTop = document.scrollingElement.scrollTop;
+               
+               var pageHeight = $(document).height() - $(window).height();
+               var progress = 100 * documentTop / pageHeight;
+               
+               if (documentTop > 0) {
+                  $(".section-transition, .sectionAll span h1, .sectionAll span p, .sectionAll ul li").each(function (i) {
+                     $(this).delay(450 / 1.5 * i).queue(function () {
+                        $(this).css({ "opacity": 1, "transform": "translateY(0)" });
+                     })
+                  })
+               }
+
+               if (documentTop > section1) {
+                  $(".side-image:eq(1)").css("opacity", "1");
+               } else {
+                  $(".side-image:eq(1)").css("opacity", "0");
+               }
+
+               // if (documentTop > section2) {
+               //     $(".side-image:eq(2)").css("opacity", "1");
+               // } else {
+               //     $(".side-image:eq(2)").css("opacity", "0");
+               // }
+
+               // if (documentTop > section3) {
+               //     $(".side-image:eq(3)").css("opacity", "1");
+               // } else {
+               //     $(".side-image:eq(3)").css("opacity", "0");
+               // }
+
+               // if (documentTop > section4) {
+               //     $(".side-image:eq(4)").css("opacity", "1");
+               // } else {
+               //     $(".side-image:eq(4)").css("opacity", "0");
+               // }
+            });
+         });
+      </script>
+   </div>
+
+   <footer>
+      <div>
+         <p>Developed by <br> Kai Jie <br> 2023 &copy;</p>
+      </div>
+   </footer>
+   <script src="./assets/js/script.js"></script>
+   <script src="./assets/js/transition.js"></script>
+</body>
+
+</html>

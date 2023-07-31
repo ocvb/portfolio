@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Contact</title>
+   <title>Kai's Projects</title>
+   <link rel="icon" type="image/x-icon" href="./assets/img/icon.png">
+   <link rel="stylesheet" href="./assets/mainStyle.css">
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+   <style>
+      .main-container {
+         margin: 50px 0;
+      }
+
+
+      .main-container>div {
+         width: 500px;
+         margin: auto;
+      }
+
+      #contact-form {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         padding: 50px;
+         background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+         transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+         border-radius: 24px 24px 24px 24px;
+         position: relative;
+         font-size: 1.15em;
+      }
+
+      #contact-form > p {
+         font-weight: 400;
+      }
+
+      #contact-form>div {
+         position: relative;
+         margin: 5px;
+         width: 100%;
+      }
+
+      #contact-form input,
+      #contact-form textarea {
+         background: white;
+         border-radius: 12px;
+         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+         height: 20px;
+         border: 0;
+         padding: 7px 12px;
+         width: -webkit-fill-available;
+         font-size: 16px;
+      }
+
+      #contact-form textarea {
+         min-height: 150px;
+         resize: vertical;
+      }
+
+      #contact-form label {
+         font-weight: 400;
+      }
+
+
+      #contact-form input[type="submit"] {
+         width: 100%;
+         height: auto;
+         cursor: pointer;
+         transition: all 0.12s ease-in;
+         font-weight: 400;
+      }
+
+      #contact-form input[type="submit"]:hover {
+         background-color: #ececec;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="nav">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="projects.html">Projects</a></div>
+      <div><a id="selected" href="contact.html">Contact</a></div>
+   </div>
+
+   <div class="main-container transition-top-down">
+      <div>
+         <form id="contact-form" >
+            <p class="transition-top-down">Contact Me!</p>
+            <div class="transition-top-down">
+               <label>Name:</label>
+               <input type="text" name="name" placeholder="Name" value="" required>
+            </div>
+            <div class="transition-top-down">
+               <label for="">Email:</label>
+               <input type="email" name="email" placeholder="Email" value="" required>
+            </div>
+            <div class="transition-top-down">
+               <label for="">Message:</label>
+               <textarea id="textbox" name="message" placeholder="Message" required></textarea>
+            </div>
+            <div class="transition-top-down">
+               <input type="submit">
+            </div>
+            <p style="display: none; color: green;" id="status-contact-form">wadinaiw</p>
+         </form>
+      </div>
+   </div>
+
+   <script>
+      $(function () {
+         $("#contact-form").submit(function (e) {
+            e.preventDefault();
+
+            if (this.reportValidity()) {
+               $("#status-contact-form").text("Success, your enquiry has been sent!").show();
+               localStorage.setItem("name", $("input[name=name]").val())
+               localStorage.setItem("email", $("input[name=email]").val())
+               localStorage.setItem("message", $("#textbox").val())
+
+               setTimeout(function () {
+                  window.location.assign("response.html");
+               }, 500);
+            }
+         });
+      });
+   </script>
+   <script src="./assets/js/script.js"></script>
+   <script src="./assets/js/transition.js"></script>
+
+   <footer class="transition-top-down">
+      <div>
+         <p>Developed by <br> Kai Jie <br> 2023 &copy;</p>
+      </div>
+   </footer>
+</body>
+
+</html>

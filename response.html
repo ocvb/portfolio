@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Success!</title>
+   <link rel="icon" type="image/x-icon" href="./assets/img/icon.png">
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="/assets/mainStyle.css">
+   <style>
+      body {
+         margin: 0;
+      }
+
+      div {
+         height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      table {
+         margin: auto;
+         font-family: "Lexend";
+         table-layout: fixed;
+      }
+
+      table tr td {
+         padding: 15px;
+         text-align: center;
+         word-break: break-all;
+         width: auto;
+         width: 300px;
+      }
+
+      a {
+         text-decoration: none;
+      }
+   </style>
+</head>
+
+<body>
+   <div>
+      <table class="transition-top-down">
+         <tr class="header transition-top-down">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+         </tr>
+         <tr>
+            <td class="transition-top-down">
+               <p class="gname"></p>
+            </td>
+            <td class="transition-top-down">
+               <p class="gemail"></p>
+            </td>
+            <td class="transition-top-down">
+               <p class="gmessage"></p>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3" class="transition-top-down">
+               <p class="status transition-top-down">Thank you for your enquiry!</p>
+               <p class="return transition-top-down" style="display: none;">Returning...</p>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="3" class="insertBtn"><a class="stayonpage" href="javascript:cleartimeout()">Stay on page?</a>
+            </td>
+         </tr>
+      </table>
+   </div>
+
+   <script>
+      if (!localStorage.getItem('name')) {
+         $(".header").hide();
+         $(".status").text("Wrong route, please try again.");
+         $(".return").show();
+         $(".stayonpage").hide();
+         setTimeout(function () { window.location = "index.html" }, 3000);
+      }
+
+
+
+      $(".gname").text(localStorage.getItem('name'));
+      $(".gemail").text(localStorage.getItem('email'));
+      $(".gmessage").text(localStorage.getItem('message'));
+      $(".return").show();
+      var exitPage = setTimeout(function () {
+         window.location = "index.html";
+         localStorage.clear();
+      }, 4000);
+      
+      function leavepage() {
+         window.location = "index.html";
+         localStorage.clear();
+      }
+
+
+      function cleartimeout() {
+         clearTimeout(exitPage);
+         $(".stayonpage").text("Leave page").prop("href", "javascript:leavepage()").prop("id", "leave");
+         $(".return").css("opacity", 0);
+      }
+   </script>
+
+   <script src="./assets/js/transition.js"></script>
+</body>
+
+</html>
