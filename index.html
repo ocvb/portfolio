@@ -62,6 +62,7 @@
 
       .header .whereTheTextLives .shiny {
          background: -webkit-linear-gradient(-10deg, #979797, #1f1f1f);
+         background-clip: text;
          -webkit-background-clip: text;
          -moz-background-clip: text;
          -webkit-text-fill-color: transparent;
@@ -278,7 +279,7 @@
       <div class="header">
          <div class="whereTheTextLives">
             <p>Hi, I'm Kai Jie</p>
-            <p class="shiny transition-left-right">I'm a Web Developer</p>
+            <p class="shiny">I'm a Web Developer</p>
             <p class="littleTxt">Made using HTML, JS and CSS</p>
             <hr id="intro-hr" width="250px" style="margin-top: 22px; height: 1px; background-color: black;">
          </div>
@@ -606,14 +607,14 @@
 
       <script>
          // Animations
-         $(".whereTheTextLives p, .whereTheTextLives hr, .shiny").delay(200).each(function (i) {
-            $(this).delay(500 / 1.5 * i).queue(function () {
+         $(".whereTheTextLives p, .whereTheTextLives hr").each(function (i) {
+            $(this).delay(400 / 1.5 * i).queue(function () {
                $(this).css({ "opacity": 1, "transform": "translateX(0)" });
             })
          })
 
-         $(".skills-sub-column:nth-child(1n) div, .skill-header h2").delay(500).each(function (i) {
-            $(this).delay(300 / 1.5 * i).queue(function () {
+         $(".skills-sub-column:nth-child(1n) div, .skill-header h2").each(function (i) {
+            $(this).delay(200 / 1.5 * i).queue(function () {
                $(this).css({ "opacity": 1, "transform": "translateX(0)" });
             })
          });
@@ -639,7 +640,7 @@
 
                if (documentTop > 0) {
                   $(".section-transition, .sectionAll span h1, .sectionAll span p, .sectionAll ul li").each(function (i) {
-                     $(this).delay(450 / 1.5 * i).queue(function () {
+                     $(this).delay(550 / 1.5 * i).queue(function () {
                         $(this).css({ "opacity": 1, "transform": "translateY(0)" });
                      })
                   })
