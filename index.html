@@ -483,11 +483,11 @@
             color: rgb(255, 255, 255);
          }
 
-         .section-transition {
+         /* .section-transition {
             opacity: 0;
             transform: translateY(100%);
             transition: opacity 0.8s, transform 0.8s;
-         }
+         } */
 
          @media (max-width: 768px) {
             .section-scrolling {
@@ -639,7 +639,7 @@
                var progress = 100 * documentTop / pageHeight;
 
                if (documentTop > 0) {
-                  $(".section-transition, .sectionAll span h1, .sectionAll span p, .sectionAll ul li").each(function (i) {
+                  $(".sectionAll span h1, .sectionAll span p, .sectionAll ul li").each(function (i) {
                      $(this).delay(550 / 1.5 * i).queue(function () {
                         $(this).css({ "opacity": 1, "transform": "translateY(0)" });
                      })
