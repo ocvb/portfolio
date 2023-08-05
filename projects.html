@@ -26,9 +26,14 @@
          font-size: 1.6em;
          text-transform: uppercase;
          font-family: var(--font-name);
+         height: 100vh;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
       }
 
-      .project-heading p{
+      .project-heading p {
          font-weight: 400;
       }
 
@@ -132,14 +137,6 @@
          }
       }
    </style>
-</head>
-
-<body>
-   <div class="nav" class="transition-left-right">
-      <div><a href="index.html">Home</a></div>
-      <div><a id="selected" href="projects.html">Projects</a></div>
-      <div><a href="contact.html">Contact</a></div>
-   </div>
 
    <style>
       @keyframes bounce {
@@ -153,12 +150,23 @@
          }
       }
 
+      @keyframes bounce2 {
+         from {
+            transform: translateY(0);
+         }
+
+         to {
+            transform: translateY(20%);
+            ;
+         }
+      }
+
       .scroll-here {
          position: fixed;
          display: inline-block;
          top: 0;
          opacity: 0;
-         transform: translate3d(-100%, 25vh, 0) translateY(200%);
+         transform: translate3d(120vw, 25vh, 0) translateY(200%);
          transition: opacity 0.8s, transform 0.8s;
       }
 
@@ -170,13 +178,42 @@
          animation-direction: alternate;
 
       }
+
+      .scroll-text {
+         font-family: var(--font-name2) !important;
+         margin-top: 20px;
+         font-size: small;
+         position: relative;
+         display: inline-block;
+         top: 0;
+         text-transform: capitalize;
+      }
+
+      .scroll-text:after {
+         font-size: 25px;
+         content: "\2193";
+         display: block;
+         animation: bounce2 0.35s infinite ease;
+         animation-direction: alternate;
+      }
    </style>
+</head>
+
+<body>
+   <div class="nav" class="transition-left-right">
+      <div><a href="index.html">Home</a></div>
+      <div><a id="selected" href="projects.html">Projects</a></div>
+      <div><a href="contact.html">Contact</a></div>
+   </div>
+
    <div class="scroll-here">Scroll here</div>
-   <div class="project-section-column transition-top-down">
-      <div class="project-heading transition-top-down">
+   
+   <div class="project-section-column">
+      <div class="project-heading transition-left-right">
          <p>Internship Projects</p>
          <hr>
          <p class="project-miniTitle" style="font-size: 12px;">I've the permission to include these</p>
+         <div class="scroll-text"></div>
       </div>
 
       <div>
@@ -184,7 +221,8 @@
          <p class="project-miniTitle transition-top-down">Cafe</p>
          <div class="project-column">
             <iframe src="https://tyca.com.sg/" frameborder="0" loading="lazy" class="transition-top-down"></iframe>
-            <img src="./assets/img/tyca.png" class="mobile-mode-project transition-top-down" title="tyca" draggable="false">
+            <img src="./assets/img/tyca.png" class="mobile-mode-project transition-top-down" title="tyca"
+               draggable="false">
             <div class="project-subtitle transition-top-down">Made from stratch using <a href="https://wordpress.org/"
                   target="_blank">Wordpress</a> and it was my last project before my
                departure </div>
@@ -218,7 +256,7 @@
    </div>
 
 
-   <footer>
+   <footer class="transition-top-down">
       <div>
          <p>Developed by <br> Kai Jie <br> 2023 &copy;</p>
       </div>
@@ -228,7 +266,7 @@
    <script>
       $(".scroll-here").delay(200).each(function (i) {
          $(this).delay(500 / 1.5 * i).queue(function () {
-            $(this).css({ "opacity": 1, "transform": "translate3d(5vw, 25vh, 0) translateY(200%)" });
+            $(this).css({ "opacity": 1, "transform": "translate3d(90vw, 25vh, 0) translateY(200%)" });
          })
       });
    </script>
