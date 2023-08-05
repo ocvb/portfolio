@@ -630,10 +630,6 @@
                // section3 = $(".section3-scroll").offset().top - 350,
                // section4 = $(".section4-scroll").offset().top - 350;
                var documentTop = document.scrollingElement.scrollTop;
-               
-               var pageHeight = $(document).height() - $(window).height();
-               var progress = 100 * documentTop / pageHeight;
-               
 
                var pageHeight = $(document).height() - $(window).height();
                var progress = 100 * documentTop / pageHeight;
@@ -679,6 +675,7 @@
          <p>Developed by <br> Kai Jie <br> 2023 &copy;</p>
       </div>
    </footer>
+   
    <script src="./assets/js/script.js"></script>
    <script src="./assets/js/transition.js"></script>
 </body>
