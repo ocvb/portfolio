@@ -278,7 +278,11 @@
       <div class="header">
          <div class="whereTheTextLives">
             <p>Hi, I'm Kai Jie</p>
+<<<<<<< HEAD
             <p class="shiny">I'm a Web Developer</p>
+=======
+            <p class="shiny transition-left-right">I'm a Web Developer</p>
+>>>>>>> ed4c9e0 (test update)
             <p class="littleTxt">Made using HTML, JS and CSS</p>
             <hr id="intro-hr" width="250px" style="margin-top: 22px; height: 1px; background-color: black;">
          </div>
@@ -606,7 +610,11 @@
 
       <script>
          // Animations
+<<<<<<< HEAD
          $(".whereTheTextLives p, .whereTheTextLives hr").delay(200).each(function (i) {
+=======
+         $(".whereTheTextLives p, .whereTheTextLives hr, .shiny").delay(200).each(function (i) {
+>>>>>>> ed4c9e0 (test update)
             $(this).delay(500 / 1.5 * i).queue(function () {
                $(this).css({ "opacity": 1, "transform": "translateX(0)" });
             })
@@ -629,10 +637,17 @@
                // section3 = $(".section3-scroll").offset().top - 350,
                // section4 = $(".section4-scroll").offset().top - 350;
                var documentTop = document.scrollingElement.scrollTop;
+<<<<<<< HEAD
                
                var pageHeight = $(document).height() - $(window).height();
                var progress = 100 * documentTop / pageHeight;
                
+=======
+
+               var pageHeight = $(document).height() - $(window).height();
+               var progress = 100 * documentTop / pageHeight;
+
+>>>>>>> ed4c9e0 (test update)
                if (documentTop > 0) {
                   $(".section-transition, .sectionAll span h1, .sectionAll span p, .sectionAll ul li").each(function (i) {
                      $(this).delay(450 / 1.5 * i).queue(function () {
